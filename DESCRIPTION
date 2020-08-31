@@ -1,0 +1,12 @@
+Package: accdbexport
+Type: Package
+Title: This package converts an accdb file to csvs using jackcess
+Version: 0.0.1
+Author: Jonathan Kennel
+Maintainer: Jonathan Kennel <jkennel@uoguelph.ca>
+Description: This package contains one function called accdb_to_csv which converts the tables of a Microsoft Access database to csv files.
+License: What license is it under?
+Imports: rJava
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
