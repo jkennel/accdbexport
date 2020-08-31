@@ -3,7 +3,7 @@
 #' @param accdb_file path to access database
 #' @param ... arguments to pass to fwrite
 #'
-#' @return
+#' @return vector of table names
 #' @export
 accdb_to_csv <- function(accdb_file, ...) {
   jackcess_loc <- file.path(system.file('', package = 'accdbexport'), "jackcess-3.5.0.jar")
@@ -30,13 +30,14 @@ accdb_to_csv <- function(accdb_file, ...) {
   for(i in seq_along(tbl_name)) {
 
     do_export <- !rJava::J(dbop, "getTableMetaData", tbl_name[i])$isLinked()
+
     if(do_export) {
 
-      tabres <- rJava::J(dbop, "getTable", tbl_name[i])
+      tab <- rJava::J(dbop, "getTable", tbl_name[i])
 
-      fwrite(fread(rJava::J(tabres, "display")), paste0(tbl_name[i], '.csv'), ...)
+      data.table::fwrite(data.table::fread(rJava::J(tab, "display")), paste0(tbl_name[i], '.csv'), ...)
     }
   }
 
-
+  invisible(tbl_name)
 }

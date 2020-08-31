@@ -12,7 +12,7 @@ accdb_to_csv(accdb_file, ...)
 \item{...}{arguments to pass to fwrite}
 }
 \value{
-
+vector of table names
 }
 \description{
 accdb_to_csv
