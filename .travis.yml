@@ -17,8 +17,14 @@ r_packages:
 apt_packages:
   - r-cran-rjava
 
+before_install:
+ - sudo R CMD javareconf
+
 after_success:
   - Rscript -e 'covr::codecov()'
 
 warnings_are_errors: true
+
+apt_packages:
+ - openjdk-7-jre
 
