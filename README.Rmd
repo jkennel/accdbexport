@@ -1,3 +1,6 @@
+---
+output: md_document
+---
 
 # accdbexport #
 [![Build Status](https://travis-ci.org/jkennel/accdbexport.svg?branch=master)](https://travis-ci.org/jkennel/accdbexport)
@@ -15,10 +18,10 @@ remotes::install_github('jkennel/accdbexport')
 
 It only has one function.
 
-```{r setup, eval = FALSE, echo = TRUE}
+```{r example, eval = FALSE, echo = TRUE}
 
-library(accdbexport)
 library(rJava)
+library(accdbexport)
 
 accdb_to_csv(path_to_accdb, path_to_output_folder)
 
