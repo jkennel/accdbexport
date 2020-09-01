@@ -36,8 +36,12 @@ accdb_to_csv <- function(accdb_file, output_dir, ...) {
 
       tab <- rJava::J(dbop, "getTable", tbl_name[i])
 
+      if(!dir.exists(output_dir)) {
+        dir.create(output_dir)
+      }
+
       data.table::fwrite(data.table::fread(rJava::J(tab, "display")),
-                         paste0(output_dir, tbl_name[i], '.gz'), ...)
+                         paste0(output_dir, tbl_name[i], '.csv'), ...)
 
     }
   }
