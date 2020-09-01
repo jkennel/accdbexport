@@ -1,38 +1,31 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-# this is from the xlsx package
-
 language: r
 
-os:
-  - linux
-  - osx
-
-osx_image: xcode9.3
-
-sudo: true
 cache: packages
 
-r:
-- oldrel
-- release
-- devel
+sudo: required
 
 matrix:
-  allow_failures:
-  - r: devel
-  - r: oldrel
-    os: osx
+  include:
+    - os: linux
+      r: release
+
+r_packages:
+  - data.table
+
+
+apt_packages:
+  - default-jdk
 
 before_install:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo R CMD javareconf ; fi
+  - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+  - export PATH=$PATH:$JAVA_HOME/bin
+  - export LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-amd64/lib
+  - sudo R CMD javareconf
 
 before_script:
-- java -version
-- echo PATH=$PATH
-- echo JAVA_HOME=$JAVA_HOME
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo R CMD javareconf ; fi
-- R -e 'Sys.getenv("JAVA_HOME")'
-- R -e 'library(rJava); .jinit()'
+  - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+  - export PATH=$PATH:$JAVA_HOME/bin
+  - export LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-amd64/lib
+  - sudo R CMD javareconf
 
-after_success:
-- Rscript -e 'covr::codecov()'
+warnings_are_errors: true
