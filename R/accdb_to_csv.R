@@ -1,11 +1,12 @@
 #' accdb_to_csv
 #'
 #' @param accdb_file path to access database
+#' @param output_dir directory to output the results
 #' @param ... arguments to pass to fwrite
 #'
 #' @return vector of table names
 #' @export
-accdb_to_csv <- function(accdb_file, ...) {
+accdb_to_csv <- function(accdb_file, output_dir, ...) {
   jackcess_loc <- file.path(system.file('', package = 'accdbexport'), "jackcess-3.5.0.jar")
   logging_loc  <- file.path(system.file('', package = 'accdbexport'), "commons-logging-1.2.jar")
   common_loc   <- file.path(system.file('', package = 'accdbexport'), "commons-lang3-3.11.jar")
@@ -35,7 +36,9 @@ accdb_to_csv <- function(accdb_file, ...) {
 
       tab <- rJava::J(dbop, "getTable", tbl_name[i])
 
-      data.table::fwrite(data.table::fread(rJava::J(tab, "display")), paste0(tbl_name[i], '.csv'), ...)
+      data.table::fwrite(data.table::fread(rJava::J(tab, "display")),
+                         paste0(output_dir, tbl_name[i], '.gz'), ...)
+
     }
   }
 

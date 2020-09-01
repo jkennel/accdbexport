@@ -4,10 +4,12 @@
 \alias{accdb_to_csv}
 \title{accdb_to_csv}
 \usage{
-accdb_to_csv(accdb_file, ...)
+accdb_to_csv(accdb_file, output_dir, ...)
 }
 \arguments{
 \item{accdb_file}{path to access database}
+
+\item{output_dir}{directory to output the results}
 
 \item{...}{arguments to pass to fwrite}
 }
