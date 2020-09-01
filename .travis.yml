@@ -14,11 +14,10 @@ r_packages:
   - devtools
   - covr
 
-apt_packages:
-  - r-cran-rjava
 
 before_install:
- - sudo R CMD javareconf
+  - sudo apt install r-cran-rjava
+  - sudo R CMD javareconf
 
 after_success:
   - Rscript -e 'covr::codecov()'
@@ -26,5 +25,5 @@ after_success:
 warnings_are_errors: true
 
 apt_packages:
- - openjdk-7-jre
+ - openjdk-8-jre
 
