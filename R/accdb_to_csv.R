@@ -4,6 +4,8 @@
 #' @param output_dir directory to output the results
 #' @param ... arguments to pass to fwrite
 #'
+#' @import rJava
+#'
 #' @return vector of table names
 #' @export
 accdb_to_csv <- function(accdb_file, output_dir, ...) {
