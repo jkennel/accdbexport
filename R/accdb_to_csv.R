@@ -7,6 +7,7 @@
 #' @return vector of table names
 #' @export
 accdb_to_csv <- function(accdb_file, output_dir, ...) {
+
   jackcess_loc <- file.path(system.file('', package = 'accdbexport'), "jackcess-3.5.0.jar")
   logging_loc  <- file.path(system.file('', package = 'accdbexport'), "commons-logging-1.2.jar")
   common_loc   <- file.path(system.file('', package = 'accdbexport'), "commons-lang3-3.11.jar")
@@ -47,4 +48,5 @@ accdb_to_csv <- function(accdb_file, output_dir, ...) {
   }
 
   invisible(tbl_name)
+
 }
