@@ -14,7 +14,8 @@ r_packages:
 
 
 apt_packages:
-  - default-jdk
+  - openjdk-11-jdk
+  - openjdk-11-jre
 
 before_install:
   - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
