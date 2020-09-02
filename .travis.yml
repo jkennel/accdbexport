@@ -13,14 +13,10 @@ r_packages:
   - data.table
 
 
-apt_packages:
-  - openjdk-11-jdk
-  - openjdk-11-jre
-
 before_install:
-  - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-  - export PATH=$PATH:$JAVA_HOME/bin
-  - export LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-amd64/lib
+  - sudo apt install r-cran-rjava
+
+before_script:
   - sudo R CMD javareconf
 
 warnings_are_errors: true
