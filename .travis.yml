@@ -14,9 +14,9 @@ r_packages:
 
 
 before_install:
-  - sudo apt install r-cran-rjava
-
-before_script:
+  - sudo apt-get install -y default-jre
+  - sudo apt-get install -y default-jdk
   - sudo R CMD javareconf
+  - sudo apt-get install r-cran-rjava
 
 warnings_are_errors: true
