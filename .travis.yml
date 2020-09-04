@@ -14,5 +14,12 @@ r_packages:
 apt_packages:
   - r-cran-rjava
 
+jdk:
+  - openjdk8
+
+env:
+  global:
+    - PATH=/usr/lib/jvm/java-8-openjdk-amd64/bin/:$PATH
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 warnings_are_errors: true
