@@ -1,8 +1,8 @@
 Package: accdbexport
 Type: Package
-Title: This package converts an accdb file to csvs using jackcess
+Title: This Package Converts an Accdb File to Csvs Using Jackcess
 Version: 0.0.1
-Author: Jonathan Kennel
+Author: Jonathan Kennel and Beth Parker
 Maintainer: Jonathan Kennel <jkennel@uoguelph.ca>
 Description: This package contains one function called accdb_to_csv which converts the tables of a Microsoft Access database to csv files.
 License: Apache License (>= 2.0)
